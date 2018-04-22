@@ -152,4 +152,4 @@ async def on_message(message):
                         break
 
 
-client.run(config['Main']['token'])
+client.run(NDM3NjUwNjk4NTI0Njg4Mzg1.Db5K6Q.-t9DWGcJT-xn8mQCoHNvEjud2zY)
