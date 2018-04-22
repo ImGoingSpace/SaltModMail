@@ -153,4 +153,3 @@ async def on_message(message):
 
 
 client.run(config['Main']['token'])
-client.login(process.env.BOT.TOKEN);
