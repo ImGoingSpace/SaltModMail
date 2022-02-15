@@ -114,9 +114,9 @@ def remove_ignore(user_id: int) -> int:
 async def on_ready():
     if client.already_ready:
         return
-    client.channel = client.get_channel(int(config['Main']['channel_id']))
+    client.channel = client.get_channel(int(os.environ.get('channel_id')))
     if not client.channel:
-        print(f'Channel with ID {config["Main"]["channel_id"]} not found.')
+        print(f'Channel with ID {os.environ.get("channel_id")} not found.')
         await client.close()
     print('{0.user} is now ready.'.format(client))
     startup_message = (f'{client.user} is now ready. Version {version}, branch {branch}, commit {commit[0:7]}, '
@@ -484,4 +484,4 @@ async def on_message(message):
                 await asyncio.sleep(2)
                 anti_duplicate_replies[command_name] = False
 
-client.run(config['Main']['token'])
+client.run(os.environ.get('token'))
