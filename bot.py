@@ -34,13 +34,13 @@ else:
 async def on_ready():
     if client.already_ready:
         return
-    client.channel = client.get_channel(config['Main']['channel_id'])
+    client.channel = client.get_channel(os.environ.get('channel_id'))
     if not client.channel:
-        print('Channel with ID {} not found.'.format(config['Main']['channel_id']))
+        print('Channel with ID {} not found.'.format(os.environ.get('channel_id')))
         await client.close()
     #await client.send_message(client.channel, '{0.user} is now ready.'.format(client))
     #print('{0.user} is now ready.'.format(client))
-    await client.change_presence(game=discord.Game(name=config['Main']['playing']))
+    await client.change_presence(game=discord.Game(name=os.environ.get('playing')))
     client.already_ready = True
 
 
@@ -152,4 +152,4 @@ async def on_message(message):
                         break
 
 
-client.run(config['Main']['token'])
+client.run(os.environ.get('token'))
